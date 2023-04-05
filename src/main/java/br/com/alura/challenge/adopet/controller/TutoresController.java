@@ -5,6 +5,7 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.stream.Collectors;
@@ -56,6 +57,23 @@ public class TutoresController {
         }
 
         return ResponseEntity.ok("tutor não encontrado!");
+    }
+
+    @RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH})
+    @Transactional
+    public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizacaoTutor dados) {
+        try {
+            var tutor = repository.getReferenceById(dados.id());
+
+            if (dados.senha() != null && (!dados.senha().equals(dados.confirmacaoSenha()))) {
+                return ResponseEntity.badRequest().body("Senha e confirmação senha não conferem!");
+            }
+            tutor.atualizarDados(dados);
+
+            return ResponseEntity.ok(new DadosTutor(tutor));
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.ok("tutor não encontrado!");
+        }
     }
 
 }
