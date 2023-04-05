@@ -1,6 +1,7 @@
 package br.com.alura.challenge.adopet.controller;
 
 import br.com.alura.challenge.adopet.tutor.*;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +36,16 @@ public class TutoresController {
         }
 
         return ResponseEntity.ok(tutores.stream().map(DadosDetalhesTutor::new).collect(Collectors.toList()));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity buscarPorId(@PathVariable Long id) {
+        try {
+            var tutor = repository.getReferenceById(id);
+            return ResponseEntity.ok(new DadosDetalhesTutor(tutor));
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.ok("Não encontrado");
+        }
     }
 
 }
