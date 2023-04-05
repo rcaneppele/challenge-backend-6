@@ -1,16 +1,12 @@
 package br.com.alura.challenge.adopet.controller;
 
-import br.com.alura.challenge.adopet.tutor.DadosCadastroTutor;
-import br.com.alura.challenge.adopet.tutor.DadosTutor;
-import br.com.alura.challenge.adopet.tutor.Tutor;
-import br.com.alura.challenge.adopet.tutor.TutorRepository;
+import br.com.alura.challenge.adopet.tutor.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/tutores")
@@ -29,6 +25,16 @@ public class TutoresController {
         repository.save(tutor);
 
         return ResponseEntity.ok(new DadosTutor(tutor));
+    }
+
+    @GetMapping
+    public ResponseEntity listar() {
+        var tutores = repository.findAll();
+        if (tutores.isEmpty()) {
+            return ResponseEntity.ok("Não encontrado");
+        }
+
+        return ResponseEntity.ok(tutores.stream().map(DadosDetalhesTutor::new).collect(Collectors.toList()));
     }
 
 }
