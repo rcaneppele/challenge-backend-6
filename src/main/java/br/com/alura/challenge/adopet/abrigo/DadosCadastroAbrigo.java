@@ -1,4 +1,10 @@
 package br.com.alura.challenge.adopet.abrigo;
 
-public record DadosCadastroAbrigo(String nome, String email, String telefone) {
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
+public record DadosCadastroAbrigo(
+        @NotBlank String nome,
+        @NotBlank @Email String email,
+        @NotBlank String telefone) {
 }
