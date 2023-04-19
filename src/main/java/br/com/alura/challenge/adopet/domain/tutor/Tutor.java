@@ -1,6 +1,5 @@
-package br.com.alura.challenge.adopet.tutor;
+package br.com.alura.challenge.adopet.domain.tutor;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

@@ -1,7 +1,5 @@
-package br.com.alura.challenge.adopet.abrigo;
+package br.com.alura.challenge.adopet.domain.abrigo;
 
-import br.com.alura.challenge.adopet.tutor.DadosAtualizacaoTutor;
-import br.com.alura.challenge.adopet.tutor.DadosCadastroTutor;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

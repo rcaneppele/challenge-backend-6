@@ -1,6 +1,4 @@
-package br.com.alura.challenge.adopet.pet;
-
-import br.com.alura.challenge.adopet.tutor.Tutor;
+package br.com.alura.challenge.adopet.domain.pet;
 
 public record DadosPet(Long id, String nome) {
 

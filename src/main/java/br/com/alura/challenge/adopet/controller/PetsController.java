@@ -1,7 +1,8 @@
 package br.com.alura.challenge.adopet.controller;
 
-import br.com.alura.challenge.adopet.abrigo.*;
-import br.com.alura.challenge.adopet.pet.*;
+import br.com.alura.challenge.adopet.domain.abrigo.Abrigo;
+import br.com.alura.challenge.adopet.domain.abrigo.AbrigoRepository;
+import br.com.alura.challenge.adopet.domain.pet.*;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

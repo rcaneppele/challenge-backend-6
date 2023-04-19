@@ -1,4 +1,4 @@
-package br.com.alura.challenge.adopet.tutor;
+package br.com.alura.challenge.adopet.domain.tutor;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

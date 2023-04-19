@@ -1,6 +1,4 @@
-package br.com.alura.challenge.adopet.abrigo;
-
-import br.com.alura.challenge.adopet.abrigo.Abrigo;
+package br.com.alura.challenge.adopet.domain.abrigo;
 
 public record DadosAbrigo(Long id, String nome) {
 

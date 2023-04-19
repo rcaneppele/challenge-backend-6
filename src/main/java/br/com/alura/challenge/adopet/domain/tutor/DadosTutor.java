@@ -1,4 +1,4 @@
-package br.com.alura.challenge.adopet.tutor;
+package br.com.alura.challenge.adopet.domain.tutor;
 
 public record DadosTutor(Long id, String nome) {
 

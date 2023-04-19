@@ -1,6 +1,6 @@
-package br.com.alura.challenge.adopet.pet;
+package br.com.alura.challenge.adopet.domain.pet;
 
-import br.com.alura.challenge.adopet.abrigo.Abrigo;
+import br.com.alura.challenge.adopet.domain.abrigo.Abrigo;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -49,4 +49,7 @@ public class Pet {
         this.abrigo = abrigo != null ? abrigo : this.abrigo;
     }
 
+    public void marcarComoAdotado() {
+        this.adotado = true;
+    }
 }

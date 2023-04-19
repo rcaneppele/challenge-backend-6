@@ -1,4 +1,4 @@
-package br.com.alura.challenge.adopet.abrigo;
+package br.com.alura.challenge.adopet.domain.abrigo;
 
 public record DadosDetalhesAbrigo(Long id, String nome, String telefone, String email) {
 

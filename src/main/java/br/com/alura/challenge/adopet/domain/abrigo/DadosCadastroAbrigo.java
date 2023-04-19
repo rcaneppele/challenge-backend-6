@@ -1,4 +1,4 @@
-package br.com.alura.challenge.adopet.abrigo;
+package br.com.alura.challenge.adopet.domain.abrigo;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

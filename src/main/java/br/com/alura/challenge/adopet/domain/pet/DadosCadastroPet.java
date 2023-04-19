@@ -1,4 +1,4 @@
-package br.com.alura.challenge.adopet.pet;
+package br.com.alura.challenge.adopet.domain.pet;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
