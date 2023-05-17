@@ -1,0 +1,1 @@
+ALTER TABLE usuarios add email varchar(255) not null;

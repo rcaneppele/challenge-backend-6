@@ -1,0 +1,1 @@
+ALTER TABLE abrigos ADD FOREIGN KEY(id) REFERENCES usuarios(id);

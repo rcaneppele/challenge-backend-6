@@ -1,0 +1,1 @@
+ALTER TABLE abrigos DROP COLUMN email;

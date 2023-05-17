@@ -18,13 +18,16 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "usuarios")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String login;
-    private String senha;
+    protected String login;
+    protected String senha;
+
+    protected String email;
 
     @ManyToMany
     @JoinTable(name = "usuarios_perfis",

@@ -1,5 +1,6 @@
 package br.com.alura.challenge.adopet.domain.abrigo;
 
+import br.com.alura.challenge.adopet.domain.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -12,19 +13,17 @@ import lombok.ToString;
 @NoArgsConstructor
 @Entity
 @Table(name = "abrigos")
-public class Abrigo {
+public class Abrigo extends Usuario {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private String nome;
     private String telefone;
-    private String email;
 
     public Abrigo(DadosCadastroAbrigo dados) {
         this.nome = dados.nome();
         this.email = dados.email();
         this.telefone = dados.telefone();
+        this.login = dados.login();
+        this.senha = dados.senha();
     }
 
     public void atualizarDados(DadosAtualizacaoAbrigo dados) {

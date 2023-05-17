@@ -1,0 +1,1 @@
+ALTER TABLE tutores DROP COLUMN senha;
