@@ -5,6 +5,7 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,13 +18,16 @@ public class TutoresController {
     @Autowired
     private TutorRepository repository;
 
+    @Autowired
+    private PasswordEncoder encoder;
+
     @PostMapping
     public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroTutor dados) {
         if (!dados.senha().equals(dados.confirmacaoSenha())) {
             return ResponseEntity.badRequest().body("Senha e confirmação senha não conferem!");
         }
 
-        var tutor = new Tutor(dados);
+        var tutor = new Tutor(dados, encoder.encode(dados.senha()));
         repository.save(tutor);
 
         return ResponseEntity.ok(new DadosTutor(tutor));

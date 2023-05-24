@@ -29,7 +29,7 @@ public class Usuario implements UserDetails {
 
     protected String email;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuarios_perfis",
             joinColumns = @JoinColumn(name = "usuario_id"),
             inverseJoinColumns = @JoinColumn(name = "perfil_id"))

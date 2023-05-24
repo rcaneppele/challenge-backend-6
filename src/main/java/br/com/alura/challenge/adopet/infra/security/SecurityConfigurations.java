@@ -1,5 +1,6 @@
 package br.com.alura.challenge.adopet.infra.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -17,6 +18,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfigurations {
 
+    @Autowired
+    private JWTFilter jwtFilter;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()
@@ -26,7 +30,8 @@ public class SecurityConfigurations {
                 .requestMatchers(HttpMethod.POST, "/abrigos").hasRole("ABRIGO")
                 .requestMatchers(HttpMethod.POST, "/tutores").hasRole("TUTOR")
                 .anyRequest().authenticated()
-                .and().build();
+                .and().addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
+                .build();
     }
 
     @Bean

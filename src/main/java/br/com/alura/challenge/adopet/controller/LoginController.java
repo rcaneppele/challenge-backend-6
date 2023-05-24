@@ -1,6 +1,7 @@
 package br.com.alura.challenge.adopet.controller;
 
 import br.com.alura.challenge.adopet.domain.usuario.DadosLogin;
+import br.com.alura.challenge.adopet.infra.security.JWTService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,12 +18,16 @@ public class LoginController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private JWTService jwtService;
+
     @PostMapping
     public ResponseEntity efetuarLogin(@RequestBody DadosLogin dados) {
         var dadosLoginSpring = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
-        authenticationManager.authenticate(dadosLoginSpring);
+        var authentication = authenticationManager.authenticate(dadosLoginSpring);
+        var jwt = jwtService.gerarToken(authentication);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(jwt);
     }
 
 }
